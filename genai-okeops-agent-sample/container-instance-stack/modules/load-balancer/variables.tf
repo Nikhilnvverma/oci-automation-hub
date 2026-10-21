@@ -24,3 +24,9 @@ variable "certificate_id" {
   description = "OCI Certificates service certificate OCID used by the HTTPS listener."
   type        = string
 }
+
+variable "nsg_ids" {
+  description = "Network security groups attached to this component."
+  type        = list(string)
+  default     = []
+}

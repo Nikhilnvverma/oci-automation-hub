@@ -69,3 +69,8 @@ variable "shape" {
   description = "Container instance shape. Use a flexible shape supported by Container Instances."
   type        = string
 }
+variable "nsg_ids" {
+  description = "Network security groups attached to this component."
+  type        = list(string)
+  default     = []
+}

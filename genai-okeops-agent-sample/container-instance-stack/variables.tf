@@ -68,3 +68,12 @@ variable "assign_public_ip" {
   type        = bool
   default     = false
 }
+variable "app_client_cidrs" {
+  description = "IPv4 CIDRs allowed to access the application HTTPS listener."
+  type        = set(string)
+  default     = []
+  validation {
+    condition     = alltrue([for cidr in var.app_client_cidrs : can(cidrnetmask(cidr))])
+    error_message = "Supply valid IPv4 CIDR blocks."
+  }
+}

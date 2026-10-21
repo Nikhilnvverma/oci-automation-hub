@@ -10,6 +10,10 @@ version: "20190304"
 locale: "en"
 
 variableGroups:
+  - title: Network Client Access
+    variables:
+      - ${app_client_cidrs}
+
   - title: Core
     variables:
       - ${app_name_prefix}
@@ -173,3 +177,12 @@ variables:
     required: true
     default: false
     visible: false
+
+  app_client_cidrs:
+    type: array
+    title: Application HTTPS Client CIDRs
+    description: Trusted IPv4 CIDRs. Use the current client public IP with a /32 prefix for workstation access.
+    items:
+      type: string
+    uniqueItems: true
+    default: []

@@ -46,6 +46,6 @@ USER mcpuser
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD python3.11 -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:8080/health', timeout=3).close()" || exit 1
+  CMD python3.11 -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:8080/healthz', timeout=3).close()" || exit 1
 
 CMD ["python3.11", "app.py"]

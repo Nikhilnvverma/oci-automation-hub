@@ -1,9 +1,9 @@
 # Copyright (c) 2024, 2026, Oracle and/or its affiliates. All rights reserved.
 # The Universal Permissive License (UPL), Version 1.0 as shown at https://oss.oracle.com/licenses/upl/
 locals {
-  app_data_dir             = "/app/data"
-  app_port                 = 8000
-  auth_cookie_secure       = startswith(lower(var.app_base_url), "https://") ? "true" : "false"
+  app_data_dir       = "/app/data"
+  app_port           = 8000
+  auth_cookie_secure = startswith(lower(var.app_base_url), "https://") ? "true" : "false"
 
   app_environment_variables = {
     PORT                       = tostring(local.app_port)
@@ -45,6 +45,7 @@ resource "oci_container_instances_container_instance" "app" {
   }
 
   vnics {
+    nsg_ids                = var.nsg_ids
     display_name           = "${var.app_name}-vnic"
     subnet_id              = var.subnet_id
     is_public_ip_assigned  = var.assign_public_ip

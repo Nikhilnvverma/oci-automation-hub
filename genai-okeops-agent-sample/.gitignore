@@ -1,0 +1,20 @@
+# Local deployment inputs and generated Terraform files
+**/.terraform/
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+crash.log
+
+# Local credentials, application data, and editor files
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.vscode/
+.DS_Store
+instance-images/ui-server/data/

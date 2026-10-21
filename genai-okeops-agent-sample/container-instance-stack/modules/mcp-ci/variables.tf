@@ -36,9 +36,9 @@ variable "container_display_name" {
 }
 
 variable "rag_agent_endpoint_id" {
-  type = string
+  type        = string
   description = "Agent Endpoint OCID for the RAG agent to connect to."
-  
+
 }
 
 variable "shape" {
@@ -65,4 +65,9 @@ variable "subnet_id" {
 variable "assign_public_ip" {
   description = "Whether to assign a public IP to the container instance VNIC."
   type        = bool
+}
+variable "nsg_ids" {
+  description = "Network security groups attached to this component."
+  type        = list(string)
+  default     = []
 }

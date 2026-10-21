@@ -9,11 +9,12 @@ terraform {
 }
 
 resource "oci_load_balancer_load_balancer" "this" {
-  compartment_id = var.compartment_id
-  display_name   = "${var.app_name}"
-  shape          = "flexible"
-  subnet_ids     = [var.subnet_id]
-  is_private     = false
+  compartment_id             = var.compartment_id
+  display_name               = var.app_name
+  shape                      = "flexible"
+  subnet_ids                 = [var.subnet_id]
+  is_private                 = false
+  network_security_group_ids = var.nsg_ids
   freeform_tags = {
     app       = var.app_name
     component = "load-balancer"
